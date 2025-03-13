@@ -32,6 +32,7 @@ app.use("/ratevalue",rate)
 app.use("/blogComment",blogComment)
 app.use("/bloginfo",blogComment)
 app.use("/fetchComment",fetchComment)
+app.use("/updateBlog",myblog)
 app.use("/uploads",express.static("uploads"))
 
 const port = 5555;

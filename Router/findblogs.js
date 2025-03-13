@@ -31,6 +31,34 @@ router.delete("/:id",async(req,res)=>
   }
 })
 
+router.put("/:id", async (req, res) => {
+    try {
+        console.log("Received Blog ID:", req.params.id);
+        console.log("Received Body Data:", req.body);
+        const { content } = req.body; // Ensure content is received
+        if (!content) {
+            return res.status(400).json({ error: "Content is required" });
+        }
+
+        const updatedBlog = await Blog.findByIdAndUpdate(
+            req.params.id,
+            { content },
+            { new: true } // Return updated blog
+        );
+
+        if (!updatedBlog) {
+            return res.status(404).json({ error: "Blog not found" });
+        }
+
+        res.status(200).json({ message: "Blog updated successfully", data: updatedBlog });
+    } catch (error) {
+        console.error("Update Error:", error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+
 
 
 module.exports = router;
