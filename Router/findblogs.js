@@ -33,8 +33,8 @@ router.delete("/:id",async(req,res)=>
 
 router.put("/:id", async (req, res) => {
     try {
-        console.log("Received Blog ID:", req.params.id); // ✅ Logs ID in the backend terminal
-        console.log("Received Body Data:", req.body); // ✅ Logs the content received
+        console.log("Received Blog ID:", req.params.id);
+        console.log("Received Body Data:", req.body);
         const { content } = req.body; // Ensure content is received
         if (!content) {
             return res.status(400).json({ error: "Content is required" });
